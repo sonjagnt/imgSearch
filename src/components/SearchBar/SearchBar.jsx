@@ -10,7 +10,13 @@ function SearchBar({ onSearch }) {
     onSearch(query);
     form.reset();
     if (query.trim() === "") {
-      toast("Please try to search for images!");
+      toast("Please try to search for images!", {
+        position: "bottom-center",
+        style: {
+          color: "var(--white)",
+          backgroundColor: "var(--btn)",
+        },
+      });
     }
   };
 

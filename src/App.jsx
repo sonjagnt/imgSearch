@@ -7,6 +7,7 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import Loader from "./components/Loader/Loader";
+import toast, { Toaster } from "react-hot-toast";
 
 ReactModal.setAppElement("#root");
 function App() {
@@ -28,6 +29,18 @@ function App() {
         const data = await fetchImagesWithQuery(query, page);
         setImages((prev) => [...prev, ...data.results]);
         setTotalPages(data.total_pages);
+        if (data.total_pages === 0) {
+          return toast(
+            "There's no results for your search. Please, try again!",
+            {
+              position: "bottom-center",
+              style: {
+                color: "var(--white)",
+                backgroundColor: "var(--btn)",
+              },
+            }
+          );
+        }
       } catch {
         setLoader(false);
         setError(true);
@@ -73,6 +86,7 @@ function App() {
         <ImageGallery images={images} openModal={openModal} />
       )}
       {totalPages > page && <LoadMoreBtn onClick={handleChangePage} />}
+      <Toaster />
     </div>
   );
 }
