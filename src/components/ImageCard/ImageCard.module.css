@@ -1,6 +1,10 @@
-.img {
-  display: block;
-  object-fit: cover;
-  width: 100%;
+.imgWrapper {
+  overflow: hidden;
   max-height: 200px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.img {
+  object-fit: cover;
 }

@@ -3,26 +3,21 @@ import s from "./ImageModal.module.css";
 import { IoMdClose } from "react-icons/io";
 
 function ImageModal({ image, closeModal, modalIsOpen }) {
+  if (!image) return null;
   return (
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       contentLabel="Image Modal"
+      className={s.modal}
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.7)",
           backdropFilter: "blur(5px)",
         },
-        content: {
-          maxWidth: "1100px",
-          top: "50%",
-          left: "50%",
-          translate: "-50% -50%",
-          height: "fit-content",
-        },
       }}
     >
-      <div key={image.id}>
+      <div>
         <img
           src={image.urls.regular}
           alt={image.description}

@@ -7,7 +7,7 @@ function Loader() {
       visible={true}
       height="80"
       width="80"
-      color="#1d8dd7"
+      color="var(--purple)"
       radius="9"
       ariaLabel="three-dots-loading"
       wrapperClass={s.loader}
