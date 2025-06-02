@@ -1,5 +1,4 @@
 .modal {
-  z-index: 1000;
   position: absolute;
   background-color: var(--white);
   border-radius: 12px;
@@ -13,21 +12,13 @@
   height: fit-content;
 }
 
-.modalOverlay {
-  /* position: fixed;
-  height: 100vh;
-  width: 100vw; */
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-}
-
 .img {
   object-fit: contain;
   width: 100%;
 }
 
 .img-info {
-  padding: 20px;
+  padding: 20px 0 32px 0;
   display: flex;
   justify-content: space-around;
 }

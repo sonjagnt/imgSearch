@@ -1,6 +1,14 @@
 import ReactModal from "react-modal";
 import s from "./ImageModal.module.css";
 import { IoMdClose } from "react-icons/io";
+import { FaHeart, FaRegUserCircle } from "react-icons/fa";
+
+const customStyle = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backdropFilter: "blur(5px)",
+  },
+};
 
 function ImageModal({ image, closeModal, modalIsOpen }) {
   if (!image) return null;
@@ -9,15 +17,10 @@ function ImageModal({ image, closeModal, modalIsOpen }) {
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       contentLabel="Image Modal"
+      style={customStyle}
       className={s.modal}
-      style={{
-        overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          backdropFilter: "blur(5px)",
-        },
-      }}
     >
-      <div>
+      <div key={image.id}>
         <img
           src={image.urls.regular}
           alt={image.description}
@@ -25,14 +28,16 @@ function ImageModal({ image, closeModal, modalIsOpen }) {
         />
         <ul className={s["img-info"]}>
           <li className={s["img-info-item"]}>
+            <FaHeart size={16} />
             <h4>Likes</h4>
             <p>{image.likes}</p>
           </li>
           <li className={s["img-info-item"]}>
             <h4>Description</h4>
-            <p>{image.description}</p>
+            <p>{image.description || "-"}</p>
           </li>
           <li className={s["img-info-item"]}>
+            <FaRegUserCircle size={16} />
             <h4>Author</h4>
             <div className={s["author-img"]}>
               <p>{image.user.name}</p>
